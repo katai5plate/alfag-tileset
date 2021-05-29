@@ -1,5 +1,5 @@
 {
-  "name": "alfag-tileset-manager",
+  "name": "alfag-tileset",
   "version": "1.0.0",
   "description": "MV/MZ のタイルセット加工ツール",
   "main": "index.js",
