@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "MV/MZ のタイルセット加工ツール",
   "main": "index.js",
-  "homepage": "./",
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "rimraf build docs && react-scripts build && node -e \"require('fs').renameSync('build','docs')\"",
