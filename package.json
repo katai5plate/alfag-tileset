@@ -6,7 +6,7 @@
   "homepage": ".",
   "scripts": {
     "start": "cross-env FAST_REFRESH=false react-scripts start",
-    "build": "rimraf build docs && react-scripts build && node -e \"require('fs').renameSync('build','docs')\"",
+    "build": "rimraf build docs && react-scripts build && cpx build/**/* docs && rimraf build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@types/bmp-js": "^0.1.0",
+    "cpx": "^1.5.0",
     "cross-env": "^7.0.3",
     "rimraf": "^2.7.1"
   },
