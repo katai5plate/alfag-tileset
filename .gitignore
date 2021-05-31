@@ -1,3 +1,5 @@
+*.bmp
+
 # Logs
 logs
 *.log
