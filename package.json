@@ -1,7 +1,7 @@
 {
-  "name": "alfag-tileset",
+  "name": "alfag-webtools",
   "version": "1.0.0",
-  "description": "MV/MZ のタイルセット加工ツール",
+  "description": "MV/MZ のタイルセット加工ツール ほか",
   "main": "index.js",
   "homepage": ".",
   "scripts": {
@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/katai5plate/alfag-tileset.git"
+    "url": "git+https://github.com/katai5plate/alfag-webtools.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/katai5plate/alfag-tileset/issues"
+    "url": "https://github.com/katai5plate/alfag-webtools/issues"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
