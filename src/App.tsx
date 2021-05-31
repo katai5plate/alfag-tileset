@@ -1,48 +1,34 @@
-import { Container, Typography } from "@material-ui/core";
-import { DropzoneAreaBase, FileObject } from "material-ui-dropzone";
-import { FC, useState, useMemo, Fragment } from "react";
-import bmp from "bmp-js";
+import { Fragment } from "react";
+import TilesetConverter from "./TilesetConverter";
 
-const Dropper: FC<{
-  files: FileObject[];
-  setFiles: (fileObject: FileObject[]) => void;
-}> = ({ files, setFiles }) => {
-  const [bitmap, setBitmap] = useState<bmp.BmpDecoder | null>(null);
-  files?.[0]?.file.arrayBuffer().then((x: ArrayBuffer) => {
-    setBitmap(bmp.decode(Buffer.from(x)));
-  });
-  const isDropped = useMemo(() => files.length !== 0, [files]);
-  return (
-    <Container>
-      <div style={isDropped ? { display: "none" } : {}}>
-        <DropzoneAreaBase fileObjects={files} onAdd={setFiles} />
-      </div>
-      <div style={!isDropped ? { display: "none" } : {}}>
-        <pre>
-          {bitmap === null
-            ? "Loading..."
-            : JSON.stringify(
-                (() => {
-                  const { buffer, data, ...rest } = bitmap as any;
-                  return rest;
-                })(),
-                null,
-                2
-              )}
-        </pre>
-      </div>
-    </Container>
-  );
-};
+const getSearch = (): { page?: string } | null =>
+  window.location.search === ""
+    ? null
+    : window.location.search
+        .slice(1)
+        .split("&")
+        .reduce((p, c) => {
+          const [k, v] = c.split("=");
+          return { ...p, [k]: v };
+        }, {});
 
 export default () => {
-  const [files, setFiles] = useState<FileObject[]>([]);
   return (
     <Fragment>
-      <Container>
-        <Typography variant="h1">BMP ファイルを D&D</Typography>
-        <Dropper files={files} setFiles={setFiles} />
-      </Container>
+      {(() => {
+        switch (getSearch()?.page) {
+          case "tc":
+            return <TilesetConverter />;
+          default:
+            return (
+              <ul>
+                <li>
+                  <a href="?page=tc">タイルセットコンバーター</a>を開く
+                </li>
+              </ul>
+            );
+        }
+      })()}
     </Fragment>
   );
 };
